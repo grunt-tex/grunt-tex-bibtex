@@ -2,7 +2,7 @@
 
 Part of the [grunt-tex](https://github.com/grunt-tex) suite of LaTeX-orientated Grunt tasks.
 
-This plugin can be used to compile LaTeX files into PDFs using the application `bibtex`.
+This plugin can be used to generate bibliography files using the application `bibtex`.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5` and bibtex to be available.
@@ -47,9 +47,9 @@ If bibtex is not available on the command line as `bibtex`, put it's location in
 
 #### options.args
 Type: `Object`
-Default value: `{ interation: nonstopmode, file-line-error: null }`
+Default value: `{ terse: null }`
 
-An object of arguments to pass through to bibtex as command line options. Check the bibtex [man page](http://linux.die.net/man/1/bibtex) for all options. A few rules are applied to this arguments:
+An object of arguments to pass through to bibtex as command line options. Check the bibtex [man page](http://linux.die.net/man/1/bibtex) for all options. A few rules are applied to these arguments:
 
 * `-` is prepended to the key
 * If the value of a key is `null`, it will be treated a flag, i.e. it will be compiled as `-option` rather than `-option=null`
@@ -70,7 +70,7 @@ grunt.initConfig({
 ```
 
 #### Multitask
-In this example, bibtex is used as a multitask, with custom options used for the first document in order to make bibtex output to a custom directory
+In this example, bibtex is used as a multitask, with a custom path to bibtex specified.
 
 ```js
 grunt.initConfig({

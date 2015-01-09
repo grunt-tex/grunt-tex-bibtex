@@ -9,7 +9,7 @@ var execOpts = {
 describe("When there are no BibTex warnings", function () {
 
   var out, code;
-  beforeEach(function (done) {
+  before(function (done) {
     exec("grunt bibtex:succeed", execOpts, function (_err, _out, _code) {
       out = _out;
       code = _code;
@@ -35,7 +35,7 @@ describe("When there are no BibTex warnings", function () {
 describe("When there are BibTex warnings", function () {
 
   var out, code;
-  beforeEach(function (done) {
+  before(function (done) {
     exec("grunt bibtex:warn", execOpts, function (_err, _out, _code) {
       out = _out;
       code = _code;
@@ -61,7 +61,7 @@ describe("When there are BibTex warnings", function () {
 describe("When there are BibTex errors", function () {
 
   var out, code;
-  beforeEach(function (done) {
+  before(function (done) {
     exec("grunt bibtex:fail", execOpts, function (_err, _out, _code) {
       out = _out;
       code = _code;
