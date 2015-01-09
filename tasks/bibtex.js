@@ -24,16 +24,23 @@ module.exports = function(grunt) {
     });
 
     // Collate arguments for bibtex
-    var defaultArgs = {};
+    var defaultArgs = {
+      "-terse": null
+    };
     var argsObj = _.extend(defaultArgs, options.args);
-    var args = _.map(argsObj, function (value, key) {
-      var argString = "-" + key;
+    var args = [options.executable];
+    _.each(argsObj, function (value, key) {
       if (value !== null) {
-        argString += "=" + value;
+        if (key.substr(0, 2) === "--") {
+          args.push(key + "=" + value);
+        } else {
+          args.push(key);
+          args.push(value);
+        }
+      } else {
+        args.push(key);
       }
-      return argString;
     });
-    args.unshift(options.executable);
 
     // Iterate over all specified files, executing bibtex on them
     var promises = this.filesSrc.map(function (file) {

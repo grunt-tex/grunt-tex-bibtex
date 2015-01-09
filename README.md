@@ -1,4 +1,4 @@
-# grunt-tex-bibtex [![Build Status](https://travis-ci.org/grunt-tex/grunt-tex-bibtex.svg?branch=master)](https://travis-ci.org/grunt-tex/grunt-tex-bibtex)
+  # grunt-tex-bibtex [![Build Status](https://travis-ci.org/grunt-tex/grunt-tex-bibtex.svg?branch=master)](https://travis-ci.org/grunt-tex/grunt-tex-bibtex)
 
 Part of the [grunt-tex](https://github.com/grunt-tex) suite of LaTeX-orientated Grunt tasks.
 
@@ -47,12 +47,13 @@ If bibtex is not available on the command line as `bibtex`, put it's location in
 
 #### options.args
 Type: `Object`
-Default value: `{ terse: null }`
+Default value: `{ -terse: null }`
 
 An object of arguments to pass through to bibtex as command line options. Check the bibtex [man page](http://linux.die.net/man/1/bibtex) for all options. A few rules are applied to these arguments:
 
-* `-` is prepended to the key
-* If the value of a key is `null`, it will be treated a flag, i.e. it will be compiled as `-option` rather than `-option=null`
+* If the value of a key is `null`, it will be treated a flag, i.e. it will be compiled as `--option` rather than `--option=null`
+* If the key starts with `-` and has a value, ` ` will be used to separate the key and value
+* If the key starts with `--` and has a value, `=` will be used to separate the key and value
 
 Without changing any arguments, bibtex will be executed like so:
 
@@ -76,7 +77,7 @@ In this example, bibtex is used as a multitask, with a custom path to bibtex spe
 grunt.initConfig({
   bibtex: {
     options: {
-      command: "/usr/bin/bibtex"
+      executable: "/usr/bin/bibtex"
     },
     documentone: "documentone.aux",
     documenttwo: "documenttwo.aux"
@@ -90,3 +91,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 
 * 2015-01-08   v0.1.0   Initial release
+* 2015-01-09   v0.2.0   Change argument handling
