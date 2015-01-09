@@ -1,7 +1,7 @@
 {
   "name": "grunt-tex-bibtex",
   "description": "Grunt bibtex task",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/grunt-tex/grunt-tex-bibtex",
   "author": {
     "name": "Oliver Woodings",
